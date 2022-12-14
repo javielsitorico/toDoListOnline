@@ -4,6 +4,10 @@
      --blanco: rgb(240, 240, 240);
      --gris: rgb(160, 160, 160);
      --negro: rgb(20, 20, 20);
+     --principal: rgb(40, 124, 219);
+     --principal-oscuro: rgb(36, 98, 170);
+     --secundario: rgb(224, 41, 41);
+     --secundario-socuro: rgb(180, 39, 39);
 }
 
 * {
@@ -14,6 +18,20 @@
 body {
      background-color: rgb(240, 240, 240);
      margin: 0;
+}
+
+button {
+     padding: 15px;
+     background-color: var(--principal);
+     font-size: 20px;
+     border: none;
+     border-radius: 10px;
+     color: var(--blanco);
+     cursor: pointer;
+}
+
+button:hover {
+     background-color: var(--principal-oscuro);
 }
 
 /* Cabecera */
