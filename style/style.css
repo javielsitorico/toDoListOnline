@@ -2,7 +2,8 @@
 
 :root {
      --blanco: rgb(240, 240, 240);
-     --gris: rgb(230, 230, 230);
+     --gris: rgb(231, 231, 231);
+     --gris-oscuro: rgb(138, 138, 138);
      --negro: rgb(20, 20, 20);
      --principal: rgb(40, 124, 219);
      --principal-oscuro: rgb(36, 98, 170);
@@ -36,8 +37,25 @@ button:hover {
      background-color: var(--principal-oscuro);
 }
 
+.button-red {
+     background-color: var(--secundario);
+} 
+.button-red:hover {
+     background-color: var(--secundario-socuro);
+}
+
+.button-small {
+     padding: 10px;
+     font-size: 18px;
+}
+
 h1, h2, h3, h4, p {
      margin: 0;
+}
+
+.texto-secundario {
+     color: var(--gris-oscuro);
+     font-size: 16px;
 }
 
 /* Cabecera */
@@ -48,6 +66,7 @@ header {
      justify-content: space-around;
      box-shadow: var(--sombra);
      height: 80px;
+     background-color: var(--blanco);
 }
 
 .titulo-principal {
@@ -73,6 +92,8 @@ main .contenedor {
      flex: 1;
 }
 
+/* Contenedor */
+
 .contenedor {
      background-color: var(--blanco);
      border-radius: 15px;
@@ -86,4 +107,33 @@ main .contenedor {
 
 .contenedor h3 {
      font-size: 32px;
+}
+
+/* Lista de tareas */
+
+.lista-tareas {
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+}
+
+.lista-tareas .tarea+.tarea {
+     border-top: 1px solid rgba(138, 138, 138, .4);
+     padding-top: 12px;
+}
+
+/* Tarea */
+
+.tarea {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+}
+
+.tarea .nombre-tarea {
+     flex: 1;
+}
+
+.tarea button {
+     margin-left: 15px;
 }
