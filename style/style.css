@@ -75,6 +75,37 @@ header {
      margin: auto 0;
 }
 
+/* Contenido Section */
+
+section {
+     width: 60%;
+     margin: 0 auto;
+     padding-top: 40px;
+     display: flex;
+     gap: 20px;
+}
+
+section>* {
+     flex: 1;
+}
+
+section input {
+     border: none;
+     border-radius: 15px;
+     padding: 15px;
+     font-size: 18px;
+}
+
+section input:focus {
+     outline: none;
+     box-shadow: var(--sombra);
+}
+
+section button {
+     min-width: fit-content;
+     flex: 0;
+}
+
 /* Contenido Main */
 
 main {
