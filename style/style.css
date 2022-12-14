@@ -103,6 +103,8 @@ main .contenedor {
      display: flex;
      flex-direction: column;
      gap: 20px;
+
+     height: fit-content;
 }
 
 .contenedor h3 {
