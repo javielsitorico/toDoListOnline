@@ -2,12 +2,13 @@
 
 :root {
      --blanco: rgb(240, 240, 240);
-     --gris: rgb(160, 160, 160);
+     --gris: rgb(230, 230, 230);
      --negro: rgb(20, 20, 20);
      --principal: rgb(40, 124, 219);
      --principal-oscuro: rgb(36, 98, 170);
      --secundario: rgb(224, 41, 41);
      --secundario-socuro: rgb(180, 39, 39);
+     --sombra: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -16,22 +17,27 @@
 }
 
 body {
-     background-color: rgb(240, 240, 240);
+     background-color: var(--gris);
      margin: 0;
 }
 
 button {
-     padding: 15px;
+     padding: 15px 20px;
      background-color: var(--principal);
      font-size: 20px;
      border: none;
      border-radius: 10px;
      color: var(--blanco);
      cursor: pointer;
+     width: fit-content;
 }
 
 button:hover {
      background-color: var(--principal-oscuro);
+}
+
+h1, h2, h3, h4, p {
+     margin: 0;
 }
 
 /* Cabecera */
@@ -40,11 +46,44 @@ header {
      display: flex;
      flex-direction: row;
      justify-content: space-around;
-     box-shadow: 0px 5px 4px var(--gris);
+     box-shadow: var(--sombra);
+     height: 80px;
 }
 
 .titulo-principal {
-     font-size: 32px;
+     font-size: 38px;
      font-weight: 600;
-     text-shadow: 1px 0 1px rgba(240, 50, 70, 0.4);
+     margin: auto 0;
+}
+
+/* Contenido Main */
+
+main {
+     width: 90%;
+     margin: 0 auto;
+     padding-top: 40px;
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     gap: 30px;
+}
+
+main .contenedor {
+     min-width: 200px;
+     flex: 1;
+}
+
+.contenedor {
+     background-color: var(--blanco);
+     border-radius: 15px;
+     box-shadow: var(--sombra);
+     padding: 20px;
+
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+}
+
+.contenedor h3 {
+     font-size: 32px;
 }
