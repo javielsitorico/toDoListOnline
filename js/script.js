@@ -1,13 +1,17 @@
 let svgTiempo = 'media/svg/time.svg';
 let svgPapelera = 'media/svg/trash.svg';
-
+let listaParaHacer = document.getElementById('elementos-para-hacer');
+let listaHaciendo = document.getElementById('elementos-haciendo');
+let listaHecho = document.getElementById('elementos-hechos');
+let tareas = [];
 
 class Tarea {
 
-     constructor(nombre, tiempo, buttonTask) {
-          this._pNombre = document.createElement('p');
-          this._pNombre.classList.add('nombre-tarea');
-          this._pNombre.innerHTML = nombre;
+     constructor(nombre, tiempo, buttonTarea, idTarea) {
+          let pNombre = document.createElement('p');
+          pNombre.classList.add('nombre-tarea');
+          pNombre.innerHTML = nombre;
+          this._pNombre = pNombre;
 
           this._imgTiempo = document.createElement('img');
           this._imgTiempo.setAttribute('src', svgTiempo)
@@ -15,15 +19,16 @@ class Tarea {
           this._pTiempo = document.createElement('p');
           this._pTiempo.innerHTML = tiempo;
 
-          this._buttonTask = document.createElement('button');
-          this._buttonTask.classList.add('button-small');
-          this._buttonTask.innerHTML = buttonTask;
+          this._buttonTarea = document.createElement('button');
+          this._buttonTarea.classList.add('button-small');
+          this._buttonTarea.setAttribute('onclick', `pasarTareaWIP(${tareas.length})`);
+          this._buttonTarea.innerHTML = buttonTarea;
 
-          this._buttonDelete = document.createElement('button');
-          this._buttonDelete.classList.add('button-small', 'button-red');
+          this._buttonBorrar = document.createElement('button');
+          this._buttonBorrar.classList.add('button-small', 'button-red');
           let imgTrash = document.createElement('img');
           imgTrash.setAttribute('src', svgPapelera)
-          this._buttonDelete.append(imgTrash);
+          this._buttonBorrar.append(imgTrash);
      }
 
      set nombre(nombre) {
@@ -46,40 +51,63 @@ class Tarea {
           return this._pTiempo;
      }
 
-     get buttonTask() {
-          return this._buttonTask;
+     set buttonTarea(buttonTarea) {
+          this._buttonTarea.innerHTML = buttonTarea;
      }
 
-     get buttonDelete() {
-          return this._buttonDelete;
+     get buttonTarea() {
+          return this._buttonTarea;
+     }
+
+     get buttonBorrar() {
+          return this._buttonBorrar;
      }
 
 }
 
-function comprobarTareasVacias() {
-     let parrafoElementoVacio = document.createElement('p');
-     parrafoElementoVacio.classList.add('texto-secundario');
-     parrafoElementoVacio.innerHTML = 'There are currently no tasks';
-     let listasTareas = document.getElementsByClassName('lista-tareas');
-     for (let lista of listasTareas) {
-          if (lista.childElementCount <= 0) {
-               lista.appendChild(parrafoElementoVacio.cloneNode(true));
+function crearTarea() {
+
+     let tiempo = document.getElementById('input--tiempo-tarea').value;
+     if (document.getElementById('input--tiempo-tarea').value > 360) tiempo = 360;
+
+     for (let tarea of tareas) {
+          if (tarea.nombre.innerHTML == document.getElementById('input--nombre-tarea').value) {
+               document.getElementById('input--nombre-tarea').style.border = '1px solid #E02929';
+               return;
           }
      }
+
+     document.getElementById('input--nombre-tarea').style.border = 'none';
+
+     tareas.push(new Tarea(
+          document.getElementById('input--nombre-tarea').value,
+          tiempo,
+          'Begin Task',
+          tareas[tareas.length - 1]
+     ));
+
+     let tarea = tareas[tareas.length - 1];
+
+     let contenedorTarea = document.createElement('div');
+     contenedorTarea.classList.add('tarea');
+
+     contenedorTarea.append(
+          tarea.nombre,
+          tarea.imgTiempo,
+          tarea.tiempo,
+          tarea.buttonTarea,
+          tarea.buttonBorrar
+     );
+
+     listaParaHacer.appendChild(contenedorTarea);
+
+
+     if (document.getElementById('texto--tareas-vacias_para-hacer')) {
+          document.getElementById('texto--tareas-vacias_para-hacer').remove();
+     }
+
 }
 
-// let tarea = document.createElement('div');
-// tarea.classList.add('tarea');
+function pasarTareaWIP() {
 
-// let tareaPrueba = new Tarea('Hacer Powerpoint', '200', 'Begin Task');
-
-// tarea.append(tareaPrueba.nombre,
-//      tareaPrueba.imgTiempo,
-//      tareaPrueba.tiempo,
-//      tareaPrueba.buttonTask,
-//      tareaPrueba.buttonDelete);
-
-// listaParaHacer.appendChild(tarea.cloneNode(true));
-
-
-comprobarTareasVacias();
+}

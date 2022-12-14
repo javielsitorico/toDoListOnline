@@ -19,9 +19,9 @@
      </header>
 
      <section>
-          <input placeholder="Type the task name here" type="text" name="nombre-tarea" id="input--nombre-tarea">
-          <input placeholder="Type the time you expect the task to last here..." type="text" name="tiempo-tarea" id="input--tiempo-tarea">    
-          <button>Create Task</button>      
+          <input placeholder="Task name..." type="text" name="nombre-tarea" id="input--nombre-tarea">
+          <input placeholder="Task duration (in minutes, 360 max.)..." type="number" name="tiempo-tarea" id="input--tiempo-tarea" max="360">    
+          <button onclick="crearTarea()">Create Task</button>      
      </section>
 
      <main>
@@ -39,19 +39,20 @@
                          </button>
                     </div> 
                -->
+                    <p id="texto--tareas-vacias_para-hacer" class="texto-secundario">There are currently no tasks</p>
                </div>
           </div>
           <div class="contenedor">
                <h3>WIP</h3>
                <div class="lista-tareas" id="elementos-haciendo">
-
+                    <p id="texto--tareas-vacias_haciendo" class="texto-secundario">There are currently no tasks</p>
                </div>
                <button>Complete Tasks</button>
           </div>
           <div class="contenedor">
                <h3>Done Things!</h3>
                <div class="lista-tareas" id="elementos-hechos">
-
+                    <p id="texto--tareas-vacias_hechas" class="texto-secundario">There are currently no tasks</p>
                </div>
                <button>Clear Tasks</button>
           </div>
