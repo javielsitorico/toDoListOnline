@@ -1,0 +1,18 @@
+:root {
+     --blanco: rgb(240, 240, 240);
+     --negro: rgb(20, 20, 20);
+}
+
+* {
+     color: var(--negro);
+}
+
+body {
+     background-color: rgb(240, 240, 240);
+}
+
+header {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+}
