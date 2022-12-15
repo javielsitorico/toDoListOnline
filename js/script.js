@@ -10,11 +10,9 @@ let tareas = {};
 
 function actualizarContenedoresVacios() {
       for (lista of listasTareas) {
-            console.log(lista.innerHTML);
-            if (lista.childElementCount <= 0) {
+            if (lista.childElementCount < 1) {
                   lista.innerHTML = (textoContenedorVacio);
-            } else if (lista.innerHTML != textoContenedorVacio){
-                  console.log(lista.innerHTML);
+            } else if (lista.innerHTML != textoContenedorVacio && lista.childElementCount > 1){
                   let contenidoNuevo = (lista.innerHTML).replace(textoContenedorVacio, '');
                   lista.innerHTML = contenidoNuevo;
             }
@@ -27,20 +25,20 @@ function formatoTarea(nombre, duracion, estado) {
 
       switch (estado) {
             case 0:
-                  accionBoton = 'empezarTarea()';
+                  accionBoton = `empezarTarea('${nombre}')`;
                   nombreAccionBoton = 'Begin Task';
                   break;
             case 1:
-                  accionBoton = 'marcarTareaAcabada()';
+                  accionBoton = `marcarTareaAcabada('${nombre}')`;
                   nombreAccionBoton = 'Complete Task ✔️';
                   break;
             case 2:
                   return `
-                  <div class="tarea">
+                  <div class="tarea" id="${nombre}>
                         <p class="nombre-tarea">${nombre}</p>
                         <img src="media/svg/time.svg" alt="">
                         <p>: ${duracion} min</p>
-                        <button class="button-red button-small" onclick="eliminarTarea(${nombre})">
+                        <button class="button-red button-small" onclick="eliminarTarea('${nombre}')">
                               <img src="media/svg/trash.svg" alt="">
                         </button>
                   </div>
@@ -50,12 +48,12 @@ function formatoTarea(nombre, duracion, estado) {
       }
 
       return `
-      <div class="tarea">
+      <div class="tarea" id="${nombre}">
             <p class="nombre-tarea">${nombre}</p>
             <img src="media/svg/time.svg" alt="">
             <p>: ${duracion} min</p>
             <button class="button-small" onclick="${accionBoton}">${nombreAccionBoton}</button>
-            <button class="button-red button-small" onclick="eliminarTarea(${nombre})">
+            <button class="button-red button-small" onclick="eliminarTarea('${nombre}')">
                   <img src="media/svg/trash.svg" alt="">
             </button>
       </div>
@@ -63,15 +61,15 @@ function formatoTarea(nombre, duracion, estado) {
 }
 
 function crearTarea() {
-      let nombreTarea = document.getElementById('input--nombre-tarea');
+      let nombreNuevaTarea = document.getElementById('input--nombre-tarea');
       let tiempoTarea = document.getElementById('input--tiempo-tarea');
       let estadoTarea = 0;
 
-      if (nombreTarea.value in tareas || nombreTarea.value == '') {
-            nombreTarea.style.border = '1px solid #E02929'; 
+      if (nombreNuevaTarea.value in tareas || nombreNuevaTarea.value == '') {
+            nombreNuevaTarea.style.border = '1px solid #E02929'; 
             return;
       } else {
-            nombreTarea.style.border = 'none'; 
+            nombreNuevaTarea.style.border = 'none'; 
       }
 
       if (tiempoTarea.value < 1 || tiempoTarea.value > 360 || tiempoTarea.value == '') {
@@ -81,10 +79,23 @@ function crearTarea() {
             tiempoTarea.style.border = 'none';
       }
 
-
-      tareas[nombreTarea.value] = [tiempoTarea.value, estadoTarea];
-      let nuevaTarea = formatoTarea(nombreTarea.value, tiempoTarea.value, estadoTarea)
+      tareas[nombreNuevaTarea.value] = [tiempoTarea.value, estadoTarea];
+      let nuevaTarea = formatoTarea(nombreNuevaTarea.value, tiempoTarea.value, estadoTarea)
       listaParaHacer.innerHTML += nuevaTarea;
+      actualizarContenedoresVacios();
+}
+
+function empezarTarea(nombreTarea) {
+      console.log(nombreTarea);
+}
+
+function marcarTareaAcabada(nombreTarea) {
+
+}
+
+function eliminarTarea(nombreTarea) {
+      document.getElementById(nombreTarea).remove();
+      delete tareas[nombreTarea];
       actualizarContenedoresVacios();
 }
 
