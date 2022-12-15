@@ -3,111 +3,89 @@ let svgPapelera = 'media/svg/trash.svg';
 let listaParaHacer = document.getElementById('elementos-para-hacer');
 let listaHaciendo = document.getElementById('elementos-haciendo');
 let listaHecho = document.getElementById('elementos-hechos');
-let tareas = [];
+let listasTareas = [listaParaHacer, listaHaciendo, listaHecho];
+let textoContenedorVacio = '<p id="texto--tareas-vacias" class="texto-secundario">There are currently no tasks</p>';
 
-class Tarea {
+let tareas = {};
 
-     constructor(nombre, tiempo, buttonTarea, idTarea) {
-          let pNombre = document.createElement('p');
-          pNombre.classList.add('nombre-tarea');
-          pNombre.innerHTML = nombre;
-          this._pNombre = pNombre;
+function actualizarContenedoresVacios() {
+      for (lista of listasTareas) {
+            console.log(lista.innerHTML);
+            if (lista.childElementCount <= 0) {
+                  lista.innerHTML = (textoContenedorVacio);
+            } else if (lista.innerHTML != textoContenedorVacio){
+                  console.log(lista.innerHTML);
+                  let contenidoNuevo = (lista.innerHTML).replace(textoContenedorVacio, '');
+                  lista.innerHTML = contenidoNuevo;
+            }
+      }
+}
 
-          this._imgTiempo = document.createElement('img');
-          this._imgTiempo.setAttribute('src', svgTiempo)
+function formatoTarea(nombre, duracion, estado) {
+      let accionBoton = null;
+      let nombreAccionBoton = null;
 
-          this._pTiempo = document.createElement('p');
-          this._pTiempo.innerHTML = tiempo;
+      switch (estado) {
+            case 0:
+                  accionBoton = 'empezarTarea()';
+                  nombreAccionBoton = 'Begin Task';
+                  break;
+            case 1:
+                  accionBoton = 'marcarTareaAcabada()';
+                  nombreAccionBoton = 'Complete Task ✔️';
+                  break;
+            case 2:
+                  return `
+                  <div class="tarea">
+                        <p class="nombre-tarea">${nombre}</p>
+                        <img src="media/svg/time.svg" alt="">
+                        <p>: ${duracion} min</p>
+                        <button class="button-red button-small" onclick="eliminarTarea(${nombre})">
+                              <img src="media/svg/trash.svg" alt="">
+                        </button>
+                  </div>
+                  `
+            default:
+                  return
+      }
 
-          this._buttonTarea = document.createElement('button');
-          this._buttonTarea.classList.add('button-small');
-          this._buttonTarea.setAttribute('onclick', `pasarTareaWIP(${tareas.length})`);
-          this._buttonTarea.innerHTML = buttonTarea;
-
-          this._buttonBorrar = document.createElement('button');
-          this._buttonBorrar.classList.add('button-small', 'button-red');
-          let imgTrash = document.createElement('img');
-          imgTrash.setAttribute('src', svgPapelera)
-          this._buttonBorrar.append(imgTrash);
-     }
-
-     set nombre(nombre) {
-          this._pNombre = nombre;
-     }
-
-     get nombre() {
-          return this._pNombre;
-     }
-
-     get imgTiempo() {
-          return this._imgTiempo;
-     }
-
-     set tiempo(tiempo) {
-          this._pTiempo = tiempo;
-     }
-
-     get tiempo() {
-          return this._pTiempo;
-     }
-
-     set buttonTarea(buttonTarea) {
-          this._buttonTarea.innerHTML = buttonTarea;
-     }
-
-     get buttonTarea() {
-          return this._buttonTarea;
-     }
-
-     get buttonBorrar() {
-          return this._buttonBorrar;
-     }
-
+      return `
+      <div class="tarea">
+            <p class="nombre-tarea">${nombre}</p>
+            <img src="media/svg/time.svg" alt="">
+            <p>: ${duracion} min</p>
+            <button class="button-small" onclick="${accionBoton}">${nombreAccionBoton}</button>
+            <button class="button-red button-small" onclick="eliminarTarea(${nombre})">
+                  <img src="media/svg/trash.svg" alt="">
+            </button>
+      </div>
+      `
 }
 
 function crearTarea() {
+      let nombreTarea = document.getElementById('input--nombre-tarea');
+      let tiempoTarea = document.getElementById('input--tiempo-tarea');
+      let estadoTarea = 0;
 
-     let tiempo = document.getElementById('input--tiempo-tarea').value;
-     if (document.getElementById('input--tiempo-tarea').value > 360) tiempo = 360;
+      if (nombreTarea.value in tareas || nombreTarea.value == '') {
+            nombreTarea.style.border = '1px solid #E02929'; 
+            return;
+      } else {
+            nombreTarea.style.border = 'none'; 
+      }
 
-     for (let tarea of tareas) {
-          if (tarea.nombre.innerHTML == document.getElementById('input--nombre-tarea').value) {
-               document.getElementById('input--nombre-tarea').style.border = '1px solid #E02929';
-               return;
-          }
-     }
-
-     document.getElementById('input--nombre-tarea').style.border = 'none';
-
-     tareas.push(new Tarea(
-          document.getElementById('input--nombre-tarea').value,
-          tiempo,
-          'Begin Task',
-          tareas[tareas.length - 1]
-     ));
-
-     let tarea = tareas[tareas.length - 1];
-
-     let contenedorTarea = document.createElement('div');
-     contenedorTarea.classList.add('tarea');
-
-     contenedorTarea.append(
-          tarea.nombre,
-          tarea.imgTiempo,
-          tarea.tiempo,
-          tarea.buttonTarea,
-          tarea.buttonBorrar
-     );
-
-     listaParaHacer.appendChild(contenedorTarea);
+      if (tiempoTarea.value < 1 || tiempoTarea.value > 360 || tiempoTarea.value == '') {
+            tiempoTarea.style.border = '1px solid #E02929';
+            return;
+      } else {
+            tiempoTarea.style.border = 'none';
+      }
 
 
-     if (document.getElementById('texto--tareas-vacias_para-hacer')) {
-          document.getElementById('texto--tareas-vacias_para-hacer').remove();
-     }
-
+      tareas[nombreTarea.value] = [tiempoTarea.value, estadoTarea];
+      let nuevaTarea = formatoTarea(nombreTarea.value, tiempoTarea.value, estadoTarea)
+      listaParaHacer.innerHTML += nuevaTarea;
+      actualizarContenedoresVacios();
 }
 
-function pasarTareaWIP() {
-
-}
+actualizarContenedoresVacios();

@@ -19,8 +19,8 @@
      </header>
 
      <section>
-          <input placeholder="Task name..." type="text" name="nombre-tarea" id="input--nombre-tarea">
-          <input placeholder="Task duration (in minutes, 360 max.)..." type="number" name="tiempo-tarea" id="input--tiempo-tarea" max="360">    
+          <input placeholder="Task name..." type="text" name="nombre-tarea" id="input--nombre-tarea" required>
+          <input placeholder="Task duration (in minutes, 360 max.)..." type="number" name="tiempo-tarea" id="input--tiempo-tarea" min="1" max="360" required>    
           <button onclick="crearTarea()">Create Task</button>      
      </section>
 
@@ -28,31 +28,17 @@
           <div class="contenedor">
                <h3>Things To Do</h3>
                <div class="lista-tareas" id="elementos-para-hacer">
-               <!-- 
-                    <div class="tarea">
-                         <p class="nombre-tarea">Hacer un PowerPoint</p>
-                         <img src="media/svg/time.svg" alt="">
-                         <p>: 20 min</p>
-                         <button class="button-small">Begin Task</button>
-                         <button class="button-red button-small">
-                              <img src="media/svg/trash.svg" alt="">
-                         </button>
-                    </div> 
-               -->
-                    <p id="texto--tareas-vacias_para-hacer" class="texto-secundario">There are currently no tasks</p>
                </div>
           </div>
           <div class="contenedor">
                <h3>WIP</h3>
                <div class="lista-tareas" id="elementos-haciendo">
-                    <p id="texto--tareas-vacias_haciendo" class="texto-secundario">There are currently no tasks</p>
                </div>
                <button>Complete Tasks</button>
           </div>
           <div class="contenedor">
                <h3>Done Things!</h3>
                <div class="lista-tareas" id="elementos-hechos">
-                    <p id="texto--tareas-vacias_hechas" class="texto-secundario">There are currently no tasks</p>
                </div>
                <button>Clear Tasks</button>
           </div>
