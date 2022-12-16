@@ -7,7 +7,7 @@
      --negro: rgb(20, 20, 20);
      --principal: rgb(40, 124, 219);
      --principal-oscuro: rgb(36, 98, 170);
-     --secundario: rgb(224, 41, 41);
+     --secundario: rgb(223, 49, 49);
      --secundario-socuro: rgb(180, 39, 39);
      --sombra: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -64,15 +64,58 @@ header {
      display: flex;
      flex-direction: row;
      justify-content: space-around;
+     align-items: center;
      box-shadow: var(--sombra);
      height: 80px;
      background-color: var(--blanco);
+}
+
+.mi-github:hover {
+     color: var(--principal);
 }
 
 .titulo-principal {
      font-size: 38px;
      font-weight: 600;
      margin: auto 0;
+}
+
+.temas-colores {
+     display: flex;
+     flex-direction: row;
+     gap: 10px;
+}
+
+.temas-colores div {
+     width: 20px;
+     height: 20px;
+     border-radius: 100%;
+     cursor: pointer;
+}
+
+div#rojo {
+     background-color: var(--secundario);
+}
+div#azul {
+     background-color: var(--principal);
+}
+div#verde {
+     background-color: #4dbe43;
+}
+div#amarillo {
+     background-color: #e7e543;
+}
+div#morado {
+     background-color: #8743be;
+}
+div#oscuro {
+     background-color: var(--negro);
+}
+div#default {
+     background-color: var(--blanco);
+     width: 19px;
+     height: 19px;
+     border: 1px solid var(--negro);
 }
 
 /* Contenido Section */
