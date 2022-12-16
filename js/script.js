@@ -135,14 +135,14 @@ function marcarTareaAcabada(nombreTarea) {
 
 function completarTareasHaciendo() {
       for (let tarea in tareas) {
-            marcarTareaAcabada(tarea)
+            if (document.getElementById(tarea).parentElement == listaHaciendo)   marcarTareaAcabada(tarea);
       }
       actualizarContenedoresVacios();
 }
 
 function eliminarTareasHechas() {
       for (let tarea in tareas) {
-            eliminarTarea(tarea);
+            if (document.getElementById(tarea).parentElement == listaHecho)   eliminarTarea(tarea);
       }
       actualizarContenedoresVacios();
 }
