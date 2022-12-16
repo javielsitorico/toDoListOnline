@@ -228,4 +228,10 @@ main {
      .contenedor {
           min-width: 90%;
      }
+     header {
+          flex-direction: column;
+          height: fit-content;
+          gap: 30px;
+          padding: 30px;
+     }
 }
