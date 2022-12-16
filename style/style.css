@@ -111,6 +111,7 @@ section button {
 main {
      width: 90%;
      margin: 0 auto;
+     margin-bottom: 40px;
      padding-top: 40px;
      display: flex;
      flex-direction: row;
@@ -118,8 +119,8 @@ main {
      gap: 30px;
 }
 
-main .contenedor {
-     min-width: 200px;
+.contenedor {
+     min-width: 350px;
      flex: 1;
 }
 
@@ -148,6 +149,7 @@ main .contenedor {
      display: flex;
      flex-direction: column;
      gap: 12px;
+     max-width: 100%;
 }
 
 .lista-tareas .tarea+.tarea {
@@ -165,8 +167,22 @@ main .contenedor {
 
 .tarea .nombre-tarea {
      flex: 1;
+     overflow: hidden;
+     word-wrap: break-word;
 }
 
 .tarea button {
      margin-left: 15px;
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+     section {
+          flex-direction: column;
+          min-width: 90%;
+     }
+     .contenedor {
+          min-width: 90%;
+     }
 }
