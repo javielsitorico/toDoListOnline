@@ -1,11 +1,12 @@
 let svgTiempo = 'media/svg/time.svg';
 let svgPapelera = 'media/svg/trash.svg';
+let temasColoresJSON = './../media/colorThemes.json';
+let temasColores;
 let listaParaHacer = document.getElementById('elementos-para-hacer');
 let listaHaciendo = document.getElementById('elementos-haciendo');
 let listaHecho = document.getElementById('elementos-hechos');
 let listasTareas = [listaParaHacer, listaHaciendo, listaHecho];
 let textoContenedorVacio = '<p id="texto--tareas-vacias" class="texto-secundario">There are currently no tasks</p>';
-
 let tareas = {};
 
 function actualizarContenedoresVacios() {
@@ -36,10 +37,10 @@ function formatoTarea(nombre, duracion, etapa) {
                   return `
                   <div class="tarea" id="${nombre}">
                         <p class="nombre-tarea">${nombre}</p>
-                        <img src="media/svg/time.svg" alt="">
+                        <img src="${svgTiempo}" class="imagen-reloj" alt="">
                         <p>: ${duracion} min</p>
                         <button class="button-red button-small" onclick="eliminarTarea('${nombre}')">
-                              <img src="media/svg/trash.svg" alt="">
+                              <img src="${svgPapelera}" class="imagen-papelera" alt="">
                         </button>
                   </div>
                   `
@@ -50,11 +51,11 @@ function formatoTarea(nombre, duracion, etapa) {
       return `
       <div class="tarea" id="${nombre}">
             <p class="nombre-tarea">${nombre}</p>
-            <img src="media/svg/time.svg" alt="">
+            <img src="${svgTiempo}" class="imagen-reloj" alt="">
             <p>: ${duracion} min</p>
             <button class="button-small" onclick="${accionBoton}">${nombreAccionBoton}</button>
             <button class="button-red button-small" onclick="eliminarTarea('${nombre}')">
-                  <img src="media/svg/trash.svg" alt="">
+                  <img src="${svgPapelera}" class="imagen-papelera" alt="">
             </button>
       </div>
       `
@@ -135,16 +136,35 @@ function marcarTareaAcabada(nombreTarea) {
 
 function completarTareasHaciendo() {
       for (let tarea in tareas) {
-            if (document.getElementById(tarea).parentElement == listaHaciendo)   marcarTareaAcabada(tarea);
+            if (document.getElementById(tarea).parentElement == listaHaciendo) marcarTareaAcabada(tarea);
       }
       actualizarContenedoresVacios();
 }
 
 function eliminarTareasHechas() {
       for (let tarea in tareas) {
-            if (document.getElementById(tarea).parentElement == listaHecho)   eliminarTarea(tarea);
+            if (document.getElementById(tarea).parentElement == listaHecho) eliminarTarea(tarea);
       }
       actualizarContenedoresVacios();
 }
+
+function cambiarTema(botonTema) {
+      let tema = botonTema.id;
+
+      let colores = document.querySelector(':root');
+
+      let propiedades = getComputedStyle(colores);
+      propiedades.getPropertyValue('--blanco');
+      colores.style.setProperty('--blue', 'lightblue');
+
+      for (let color in temasColores[tema]) {
+            colores.style.setProperty('--'+color, temasColores[tema][color]);
+      }
+      
+}
+
+fetch(temasColoresJSON)
+      .then((response) => response.json())
+      .then((json) => temasColores = json);
 
 actualizarContenedoresVacios();

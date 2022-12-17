@@ -1,7 +1,7 @@
 /* Globales */
 
 :root {
-     --blanco: rgb(240, 240, 240);
+     --blanco: rgb(242, 242, 242);
      --gris: rgb(231, 231, 231);
      --gris-oscuro: rgb(138, 138, 138);
      --negro: rgb(20, 20, 20);
@@ -87,35 +87,26 @@ header {
 }
 
 .temas-colores div {
-     width: 20px;
-     height: 20px;
+     width: 19px;
+     height: 19px;
      border-radius: 100%;
      cursor: pointer;
 }
-
-div#rojo {
-     background-color: var(--secundario);
-}
-div#azul {
-     background-color: var(--principal);
-}
-div#verde {
-     background-color: #4dbe43;
-}
 div#amarillo {
      background-color: #e7e543;
-}
-div#morado {
-     background-color: #8743be;
+          border: 1px solid #141414;
 }
 div#oscuro {
-     background-color: var(--negro);
+     background-color: #141414;
+     border: 1px solid #F0F0F0;
+}
+div#morado {
+     background-color: #9A5BBC;
+     border: 1px solid #141414;
 }
 div#default {
-     background-color: var(--blanco);
-     width: 19px;
-     height: 19px;
-     border: 1px solid var(--negro);
+     background-color: #F0F0F0;
+     border: 1px solid #141414;
 }
 
 /* Contenido Section */
@@ -137,6 +128,7 @@ section input {
      border-radius: 15px;
      padding: 15px;
      font-size: 18px;
+     background-color: var(--blanco);
 }
 
 section input:focus {
@@ -212,6 +204,10 @@ main {
      flex: 1;
      overflow: hidden;
      word-wrap: break-word;
+}
+
+.tarea .imagen-reloj {
+     mix-blend-mode: exclusion;
 }
 
 .tarea button {
