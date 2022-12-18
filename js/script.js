@@ -148,6 +148,12 @@ function eliminarTareasHechas() {
       actualizarContenedoresVacios();
 }
 
+document.querySelectorAll('.boton-tema').forEach(boton => {
+      boton.addEventListener('click', event => {
+            cambiarTema(event.target);
+      })
+})
+
 function cambiarTema(botonTema) {
       let tema = botonTema.id;
 
