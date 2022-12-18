@@ -1,6 +1,6 @@
 let svgTiempo = 'media/svg/time.svg';
 let svgPapelera = 'media/svg/trash.svg';
-let temasColoresJSON = './../media/colorThemes.json';
+let temasColoresJSON = 'https://raw.githubusercontent.com/javielsitorico/toDoListOnline/master/media/colorThemes.json';
 let temasColores;
 let listaParaHacer = document.getElementById('elementos-para-hacer');
 let listaHaciendo = document.getElementById('elementos-haciendo');
@@ -171,6 +171,9 @@ function cambiarTema(botonTema) {
 
 fetch(temasColoresJSON)
       .then((response) => response.json())
-      .then((json) => temasColores = json);
+      .then((json) => temasColores = json)
+      .catch(error => {
+            (document.getElementsByClassName('temas-colores'))[0].remove();
+      });
 
 actualizarContenedoresVacios();
