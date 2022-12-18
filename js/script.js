@@ -72,6 +72,10 @@ function eliminarTarea(nombreTarea) {
       actualizarContenedoresVacios();
 }
 
+document.getElementById('boton--crear-tarea').addEventListener('click', event => {
+      crearTarea();
+});
+
 function crearTarea() {
       let nombreNuevaTarea = document.getElementById('input--nombre-tarea');
       let tiempoTarea = document.getElementById('input--tiempo-tarea');
@@ -134,12 +138,20 @@ function marcarTareaAcabada(nombreTarea) {
       actualizarContenedoresVacios();
 }
 
+document.getElementById('boton--completar-tareas-haciendo').addEventListener('click', event => {
+      completarTareasHaciendo();
+});
+
 function completarTareasHaciendo() {
       for (let tarea in tareas) {
             if (document.getElementById(tarea).parentElement == listaHaciendo) marcarTareaAcabada(tarea);
       }
       actualizarContenedoresVacios();
 }
+
+document.getElementById('boton--eliminar-tareas-hechas').addEventListener('click', event => {
+      eliminarTareasHechas();
+});
 
 function eliminarTareasHechas() {
       for (let tarea in tareas) {

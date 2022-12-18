@@ -28,7 +28,7 @@
      <section>
           <input placeholder="Task name..." type="text" name="nombre-tarea" id="input--nombre-tarea" required>
           <input placeholder="Task duration (in minutes, 360 max.)..." type="number" name="tiempo-tarea" id="input--tiempo-tarea" min="1" max="360" required>    
-          <button onclick="crearTarea()">Create Task</button>      
+          <button id="boton--crear-tarea">Create Task</button>      
      </section>
 
      <main>
@@ -43,14 +43,14 @@
                <div class="lista-tareas" id="elementos-haciendo">
                     <p id="texto--tareas-vacias" class="texto-secundario">There are currently no tasks</p>
                </div>
-               <button onclick="completarTareasHaciendo()">Complete Tasks</button>
+               <button id="boton--completar-tareas-haciendo">Complete Tasks</button>
           </div>
           <div class="contenedor">
                <h3>Done Things! 👍🏼</h3>
                <div class="lista-tareas" id="elementos-hechos">
                     <p id="texto--tareas-vacias" class="texto-secundario">There are currently no tasks</p>
                </div>
-               <button onclick="eliminarTareasHechas()">Clear Tasks</button>
+               <button id="boton--eliminar-tareas-hechas">Clear Tasks</button>
           </div>
      </main>
 
