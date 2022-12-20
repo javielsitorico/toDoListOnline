@@ -1,42 +1,42 @@
 {
     "amarillo": {
-        "blanco": "rgb(20, 27, 20)",
-        "gris": "rgb(30, 37, 30)",
-        "gris-oscuro": "rgb(138, 138, 138)",
-        "negro": "rgb(231, 229, 67)",
-        "principal": "rgb(201, 199, 37)",
-        "principal-oscuro": "rgb(181, 179, 17)",
-        "secundario": "rgb(223, 49, 49)",
-        "secundario-socuro": "rgb(180, 39, 39)"
+        "fondo-principal": "rgb(20, 27, 20)",
+        "fondo-secundario": "rgb(30, 37, 30)",
+        "fuente-secundaria": "rgb(138, 138, 138)",
+        "fuente-principal": "rgb(231, 229, 67)",
+        "botones-principal": "rgb(201, 199, 37)",
+        "botones-principal-oscuro": "rgb(181, 179, 17)",
+        "botones-secundario": "rgb(223, 49, 49)",
+        "botones-secundario-socuro": "rgb(180, 39, 39)"
     },
     "morado": {
-        "blanco": "rgb(242, 242, 242)",
-        "gris": "rgb(231, 231, 231)",
-        "gris-oscuro": "rgba(129, 34, 145)",
-        "negro": "rgb(20, 20, 20)",
-        "principal": "rgb(154, 91, 188)",
-        "principal-oscuro": "rgb(124, 61, 158)",
-        "secundario": "rgb(223, 49, 49)",
-        "secundario-socuro": "rgb(180, 39, 39)"
+        "fondo-principal": "rgb(242, 242, 242)",
+        "fondo-secundario": "rgb(231, 231, 231)",
+        "fuente-secundaria": "rgba(129, 34, 145)",
+        "fuente-principal": "rgb(20, 20, 20)",
+        "botones-principal": "rgb(154, 91, 188)",
+        "botones-principal-oscuro": "rgb(124, 61, 158)",
+        "botones-secundario": "rgb(223, 49, 49)",
+        "botones-secundario-socuro": "rgb(180, 39, 39)"
     },
     "oscuro": {
-        "blanco": "rgb(20, 20, 20)",
-        "gris": "rgb(30, 30, 30)",
-        "gris-oscuro": "rgb(138, 138, 138)",
-        "negro": "rgb(242, 242, 242)",
-        "principal": "rgb(210, 210, 210)",
-        "principal-oscuro": "rgb(200, 200, 200)",
-        "secundario": "rgb(223, 49, 49)",
-        "secundario-socuro": "rgb(180, 39, 39)"
+        "fondo-principal": "rgb(20, 20, 20)",
+        "fondo-secundario": "rgb(30, 30, 30)",
+        "fuente-secundaria": "rgb(138, 138, 138)",
+        "fuente-principal": "rgb(242, 242, 242)",
+        "botones-principal": "rgb(210, 210, 210)",
+        "botones-principal-oscuro": "rgb(200, 200, 200)",
+        "botones-secundario": "rgb(223, 49, 49)",
+        "botones-secundario-socuro": "rgb(180, 39, 39)"
     },
     "default": {
-        "blanco": "rgb(242, 242, 242)",
-        "gris": "rgb(231, 231, 231)",
-        "gris-oscuro": "rgb(138, 138, 138)",
-        "negro": "rgb(20, 20, 20)",
-        "principal": "rgb(40, 124, 219)",
-        "principal-oscuro": "rgb(36, 98, 170)",
-        "secundario": "rgb(223, 49, 49)",
-        "secundario-socuro": "rgb(180, 39, 39)"
+        "fondo-principal": "rgb(242, 242, 242)",
+        "fondo-secundario": "rgb(231, 231, 231)",
+        "fuente-secundaria": "rgb(138, 138, 138)",
+        "fuente-principal": "rgb(20, 20, 20)",
+        "botones-principal": "rgb(40, 124, 219)",
+        "botones-principal-oscuro": "rgb(36, 98, 170)",
+        "botones-secundario": "rgb(223, 49, 49)",
+        "botones-secundario-socuro": "rgb(180, 39, 39)"
     }
 }
