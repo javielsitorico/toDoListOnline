@@ -1,34 +1,34 @@
 /* Globales */
 
 :root {
-     --blanco: rgb(242, 242, 242);
-     --gris: rgb(231, 231, 231);
-     --gris-oscuro: rgb(138, 138, 138);
-     --negro: rgb(20, 20, 20);
-     --principal: rgb(40, 124, 219);
-     --principal-oscuro: rgb(36, 98, 170);
-     --secundario: rgb(223, 49, 49);
-     --secundario-socuro: rgb(180, 39, 39);
+     --fondo-principal: rgb(242, 242, 242);
+     --fondo-secundario: rgb(231, 231, 231);
+     --fuente-secundaria: rgb(138, 138, 138);
+     --fuente-principal: rgb(20, 20, 20);
+     --botones-principal: rgb(40, 124, 219);
+     --botones-principal-oscuro: rgb(36, 98, 170);
+     --botones-secundario: rgb(223, 49, 49);
+     --botones-secundario-socuro: rgb(180, 39, 39);
      --sombra: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 * {
-     color: var(--negro);
+     color: var(--fuente-principal);
      font-family: 'Source Sans Pro', sans-serif;
 }
 
 body {
-     background-color: var(--gris);
+     background-color: var(--fondo-secundario);
      margin: 0;
 }
 
 button {
      padding: 15px 20px;
-     background-color: var(--principal);
+     background-color: var(--botones-principal);
      font-size: 20px;
      border: none;
      border-radius: 10px;
-     color: var(--blanco);
+     color: var(--fondo-principal);
      cursor: pointer;
      width: fit-content;
 }
@@ -38,10 +38,10 @@ button:hover {
 }
 
 .button-red {
-     background-color: var(--secundario);
+     background-color: var(--botones-secundario);
 } 
 .button-red:hover {
-     background-color: var(--secundario-socuro);
+     background-color: var(--botones-secundario-socuro);
 }
 
 .button-small {
@@ -54,7 +54,7 @@ h1, h2, h3, h4, p {
 }
 
 .texto-secundario {
-     color: var(--gris-oscuro);
+     color: var(--fuente-secundaria);
      font-size: 16px;
 }
 
@@ -67,11 +67,11 @@ header {
      align-items: center;
      box-shadow: var(--sombra);
      height: 80px;
-     background-color: var(--blanco);
+     background-color: var(--fondo-principal);
 }
 
 .mi-github:hover {
-     color: var(--principal);
+     color: var(--botones-principal);
 }
 
 .titulo-principal {
@@ -128,7 +128,7 @@ section input {
      border-radius: 15px;
      padding: 15px;
      font-size: 18px;
-     background-color: var(--blanco);
+     background-color: var(--fondo-principal);
 }
 
 section input:focus {
@@ -162,7 +162,7 @@ main {
 /* Contenedor */
 
 .contenedor {
-     background-color: var(--blanco);
+     background-color: var(--fondo-principal);
      border-radius: 15px;
      box-shadow: var(--sombra);
      padding: 20px;
