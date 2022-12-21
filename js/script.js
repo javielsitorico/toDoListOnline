@@ -172,7 +172,6 @@ function cambiarTema(botonTema) {
       let colores = document.querySelector(':root');
 
       for (let color in temasColores[tema]) {
-            console.log(temasColores);
             colores.style.setProperty('--'+color, temasColores[tema][color]);
       }
       
